@@ -4,4 +4,4 @@ Dårlig mave fortæller dig hvornår du er for tæt på restauranter med sure sm
 # Krav
 * mongo
 * nokogiri
-* sinatra
+* sinatra (thin for ekstra performance)
