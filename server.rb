@@ -13,6 +13,14 @@ def to_skip
   return (get_page - 1) * @@limit
 end
 
+get '/' do
+	erb :index
+end
+
+get '/name/:name' do
+  return mongo.collection.find({:name => /#{params['name']}/i}).limit(@@limit).map(&:inspect)
+end
+
 get '/near/:lat/:lon/:max_dist' do
   latitude = params['lat'].to_f
   longitude = params['lon'].to_f
