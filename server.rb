@@ -13,6 +13,10 @@ def to_skip
   return (get_page - 1) * @@limit
 end
 
+before do
+  content_type 'application/json'
+end
+
 get '/' do
 	erb :index
 end
