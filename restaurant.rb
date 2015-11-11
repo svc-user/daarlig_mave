@@ -36,7 +36,7 @@ class Restaurant
     rest.businessCode = entry.attr('brancheKode').rstrip
     rest.business = entry.attr('branche').rstrip
     rest.businessType = entry.attr('virksomhedstype').rstrip
-    rest.advertisementProtection = entry.attr('reklame_beskyttelse') == 1
+    rest.advertisementProtection = (entry.attr('reklame_beskyttelse') || 0).to_i == 1
     rest.pixi = entry.attr('pixibranche').rstrip
 
     if entry.attr('seneste_kontrol') && entry.attr('seneste_kontrol_dato')
