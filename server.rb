@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json/ext'
 load 'mongo_wrapper.rb'
 
 mongo = MongoDb.new
@@ -18,7 +19,7 @@ get '/' do
 end
 
 get '/name/:name' do
-  return mongo.collection.find({:name => /#{params['name']}/i}).limit(@@limit).map(&:inspect)
+  return mongo.collection.find({:name => /#{params['name']}/i}).limit(@@limit).to_a.to_json
 end
 
 get '/near/:lat/:lon/:max_dist' do
