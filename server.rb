@@ -33,11 +33,25 @@ before do
   content_type 'application/json'
 end
 
-allowed_params = {:name => 'string', :lat => 'float', :lon => 'float',
+allowed_params = {:name => 'string', :lat => 'float', :lon => 'float', :max_dist => 'int',
                   :_id => 'int', :zip => 'int', :cvr => 'int', :pnr => 'int',
                   :elite => 'int', :street => 'string'}
 get '/search' do
   query = Hash.new
+
+  #Add lat+long query if both are present
+  if params.has_key?('lon') && params.has_key?('lat')
+    lat = params['lat'].to_f
+    lon = params['lon'].to_f
+    max_dist = if params['max_dist'] then params['max_dist'].to_i else 500 end
+
+    query[:geo_location] = {:$near => {:$geometry => {:type => 'Point', :coordinates => [lat, lon]}, :$maxDistance => max_dist}}
+
+    params.delete 'lat'
+    params.delete 'lon'
+    params.delete 'max_dist'
+  end
+
   params.each_key do |key|
     if allowed_params.has_key? key.to_sym
       puts key
@@ -52,6 +66,7 @@ get '/search' do
 end
 
 get '/' do
+  content_type 'text/html'
 	erb :index
 end
 

@@ -3,9 +3,9 @@ class Xml_loader
   require 'time'
   load 'mongo_wrapper.rb'
   load 'restaurant.rb'
-  
+
   def main
-    #system 'wget http://www.findsmiley.dk/xml/allekontrolresultater.xml -O allekontrolresultater_full.xml'
+    system 'wget http://www.findsmiley.dk/xml/allekontrolresultater.xml -O allekontrolresultater_full.xml'
 
     restaurants = []
     counter = 0

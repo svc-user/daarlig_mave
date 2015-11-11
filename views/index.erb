@@ -2,26 +2,27 @@
 <html>
 	<head>
 		<style type="text/css">
-			.center { text-align: justify; width: 300px; margin-left: auto; margin-right: auto; }
+			.center { text-align: center; width: 300px; margin-left: auto; margin-right: auto; }
 		</style>
 	</head>
 	<body>
 		<div class="center">
-			<h2>Endpoints available</h2>
-			<ul>
-				<li><pre>/near/:lat/:lon/:max_dist</pre></li>
-				<ul>
-					<li><pre>:lat =&gt; latitude</pre></li>
-					<li><pre>:lon =&gt; longitude</pre></li>
-					<li><pre>:max_dist =&gt; max distance in meters</pre></li>
-				</ul>
-				<li><pre>/zip/:zip</pre></li>
-				<li><pre>/id/:id</pre></li>
-				<li><pre>/cvr/:cvr</pre></li>
-				<li><pre>/pnr/:pnr</pre></li>
-				<li><pre>/elite/:elite</pre></li>
-				<li><pre>/name/:name</pre></li>
-			</ul>
+			<h2>Søgemuligheder</h2>
+			<p>
+				Alle søgninger fortages mod <code>/search</code>. Der kan laves en kombination af søgemuligheder med følgende paramtre:<br>
+				<code>
+					name => 'string'<br>
+				  _id => 'int'<br>
+					zip => 'int'<br>
+					cvr => 'int'<br>
+					pnr => 'int'<br>
+					elite => 'int'<br>
+					street => 'string'<br>
+					lat => 'float'<br>
+					lon => 'float'<br>
+					max_dist => 'int'
+				</code>
+			</p>
 		</div>
 	</body>
 </html>
