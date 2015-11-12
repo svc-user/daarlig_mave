@@ -1,29 +1,81 @@
 <!doctype html>
 <html>
 	<head>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 		<style type="text/css">
-			.center { text-align: center; width: 300px; margin-left: auto; margin-right: auto; }
+			body { background-color: #ddd; font-family: 'Roboto'; font-weight: 300; color: #333;}
+			.center { text-align: center; width: 400px; margin-left: auto; margin-right: auto; }
 		</style>
 	</head>
 	<body>
 		<div class="center">
 			<h2>Søgemuligheder</h2>
 			<p>
-				Alle søgninger fortages mod <code>/search</code>. Der kan laves en kombination af søgemuligheder med følgende paramtre:<br>
-				<code>
-					name => 'string'<br>
-					street => 'string'<br>
-				  _id => 'int'<br>
-					zip => 'int'<br>
-					cvr => 'int'<br>
-					pnr => 'int'<br>
-					elite => 'int'<br>
-					advertisementProtection => 'bool'<br>
-					lat => 'float'<br>
-					lon => 'float'<br>
-					max_dist => 'int'
-				</code>
+				Alle søgninger fortages mod <code>/search</code> som et GET parameter. Der kan laves en kombination af søgemuligheder med følgende paramtre:
 			</p>
+			<hr>
+			<h3>page => 'int'</h3>
+			<p>
+				Hver søgning returnerer op til 50 resultater. Ønskes flere resultater kan man gå til næste side. Første side er altid 1.
+			</p>
+			<hr>
+				<h3>name => 'string'</h3>
+				<p>
+					Helt eller delvis navn på en virksomhed.
+				</p>
+				<hr>
+				<h3>street => 'string'</h3>
+				<p>
+					Helt eller delvis vejnavn, inkl. husnummer.
+				</p>
+				<hr>
+				<h3>_id => 'int'</h3>
+				<p>
+					Det enkelte virksomheds ID som det fremgår på findsmiley.dk :-)
+				</p>
+				<hr>
+				<h3>zip => 'int'</h3>
+				<p>
+					Søgning på specifikt postnummer.
+				</p>
+				<hr>
+				<h3>cvr => 'int'</h3>
+				<p>
+					Søgning på specifikt CVR nummer.
+				</p>
+				<hr>
+				<h3>pnr => 'int'</h3>
+				<p>
+					Søgning på specifikt produktionsenheds-nummer.
+				</p>
+				<hr>
+				<h3>elite => 'int'</h3>
+				<p>
+					Søgning på om virksomheden har en elite-smiley. Der er følgende 3 muligheder:<br><br>
+					<b>0</b> = Virksomheden har ikke en elite-smiley. Entent er den for ny og har ikke haft tre besøg endnu eller den har ikke fået tre helt glade smilies over de sidste tre besøg.<br><br>
+					<b>1</b> = Virksomheden har en elite-smiley.<br><br>
+					<b>2</b> = Virksomheden kan ikke få en elite-smiley da den anses som en lav-risiko-virksomhed og besøges efter behov frem for regelmæssigt.
+				</p>
+				<hr>
+				<h3>advertisementProtection => 'bool'</h3>
+				<p>
+					Søgning på om virksomheden er reklamebeskyttet. '1' eller 'true' vil anses som 'ja' mens alt andet vil søge på virksomheder, der ikke er reklamebeskyttet.
+				</p>
+				<hr>
+				<h3>lat => 'float'</h3>
+				<p>
+					Breddegrad for at søge virksomheden ud fra en geolokation. SKAL bruges sammen med 'lon'-parametret.
+				</p>
+				<hr>
+				<h3>lon => 'float'</h3>
+				<p>
+					Længdegrad for at søge virksomheden ud fra en geolokation. SKAL bruges sammen med 'lat'-parametret.
+				</p>
+				<hr>
+				<h3>max_dist => 'int'</h3>
+				<p>
+					Maks radius i meter der ønskes at søges inden for ved søgning med lat/lon. Kan undlades - da vil 200 være standard-værdien.
+				</p>
 		</div>
 	</body>
 </html>
