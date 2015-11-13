@@ -22,7 +22,7 @@ class Xml_loader
           rest = Restaurant.map_from_xml entry
           restaurants << rest
           counter += 1
-          if counter % 1000 == 0
+          if counter % 2000 == 0
             mongo.collection.insert_many(restaurants.map(&:to_h))
             restaurants = []
             puts "Added #{counter} restaurants to mongo.."
