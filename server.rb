@@ -6,8 +6,7 @@ mongo = MongoDb.new
 LIMIT = 50
 
 before do
-  content_type 'application/json'
-  content_encoding 'UTF-8'
+  content_type 'application/json', 'charset' => 'UTF-8'
 end
 
 allowed_params = {:name => 'string', :lat => 'float', :lon => 'float', :max_dist => 'int',
