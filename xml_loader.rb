@@ -5,7 +5,7 @@ class Xml_loader
   load 'restaurant.rb'
 
   def main
-    system 'wget -q http://www.findsmiley.dk/xml/allekontrolresultater.xml -O allekontrolresultater_full.xml'
+    system 'wget -q https://www.foedevarestyrelsen.dk/_layouts/15/sdata/smiley_xml.xml -O allekontrolresultater_full.xml'
 
     restaurants = []
     counter = 0
